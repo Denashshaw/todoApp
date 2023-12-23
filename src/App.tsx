@@ -1,9 +1,11 @@
 import "./App.css";
 
 function App() {
-  return <div className="w-full h-screen bg-black rounded-xl shadow-2xl">
-    <h1 className="text-white flex justify-center align-center">Denash Shaw</h1>
+return <div className="w-full h-screen flex justify-center items-center">
+  <div className="w-[200px] h-[200px] bg-black flex justify-center items-center">
+    <h1 className="text-white">Denash Shaw</h1>
   </div>
+</div>
 }
 
 export default App;
