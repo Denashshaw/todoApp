@@ -56,15 +56,15 @@ function App() {
   function checkAnswer(answer: string) {
     if (answer === color) {
       setCorrect(CorrectEnum.Correct);
-      setLoader(true);
       setTimeout(() => {
+        setLoader(true);
         setCorrect(undefined);
         startGame();
         setLoader(false);
       }, 2000);
     } else {
       setCorrect(CorrectEnum.Wrong);
-      setTimeout(() => [setCorrect(undefined), setLoader(false)], 1000);
+      setTimeout(() => [setCorrect(undefined), setLoader(false)], 2000);
     }
   }
 
@@ -83,8 +83,9 @@ function App() {
               {options.map((option) => (
                 <button
                   key={option}
-                  className="mr-2 px-4 bg-slate-700 text-white rounded-md"
+                  className="mr-2 px-4 bg-slate-700 text-white rounded-md disabled:opacity-[.2] disabled:cursor-not-allowed"
                   onClick={() => checkAnswer(option)}
+                  disabled={loader}
                 >
                   {option}
                 </button>
@@ -97,7 +98,7 @@ function App() {
           {correct === CorrectEnum.Correct && (
             <div className="text-[green]">
               Great! You choosed the right answer. <br />
-              Find the next one
+              Find the next one. Loading...
             </div>
           )}
           {correct === CorrectEnum.Wrong && (
